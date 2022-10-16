@@ -1,0 +1,18 @@
+﻿<?php
+} else {
+  $data=mysql_query("select * from tab_stat ");
+  
+ ?>
+
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" class="formulaire">
+       إختر اسم مركز الإجـــــــــــــــــراء :<br/><br/>
+             <select name="code_etab"> 
+       <?php while($a=mysql_fetch_array($data)) 
+	                {
+       echo '<option value="'.$a['code_etab'].'">'.$a['etablissent'].'</option>';
+                    }?></select><br/><br/><br/>
+        <input type="submit" value="Afficher les etablissent">
+     </form> 
+	 <?php
+}
+?>  

@@ -1,0 +1,302 @@
+body {
+background-image:url(images/back.jpg) ;
+font-family: "Times New Roman", Times, serif;
+font-size:18px;
+color:black;
+margin:0;
+padding:0;
+}
+
+#wrapper {
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+width:auto;
+background-image:url(images/bg.jpg);
+margin:0 auto;
+border-left:1px solid #3b5998;
+border-right:1px solid #3b5998;
+
+}
+#load {
+	font-family: "Times New Roman", Times, serif;
+	display: none;
+	position: absolute;
+	left: 30px;
+	
+	/*distance from top edge of image till top edge of  wrapper div */
+	top: 10px;
+	/*right:30px; distance from rt edge of image till rt border of wrapper div */
+	background: url(images/ajax-loader.gif);
+	width: 54px;
+	height: 55px;
+	text-indent: -9999em;
+}
+
+#header {
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+background-image:url(images/header1.jpg);
+width:auto;
+height:200px;
+margin:0 auto 0 1PX;
+margin-bottom:1px;
+border-bottom:1px solid #3b5998;
+border-top:1px solid #ccc;
+background-size:100% 100%;
+}
+#imagez{
+	width:auto;
+height:200px;
+background-image:url(images/header.jpg);
+background-size:100% 100%;
+}
+
+#header h2 {
+	font-family: "Times New Roman", Times, serif;
+direction:rtl;
+padding:20px 400px;
+font-size:16px;
+color:#8d3d03;
+
+}
+
+
+#content {
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+	direction:rtl;
+margin:0 auto 0 0;
+
+
+}
+
+#content a{
+	
+	font-family: "Times New Roman", Times, serif;
+text-decoration:none;
+}
+
+	td {
+		font-family: "Times New Roman", Times, serif;
+ vertical-align:top;
+ }
+
+
+
+#sidebar {
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+width:200px;
+
+
+}
+#sidebar a {
+	font-family: "Times New Roman", Times, serif;
+text-decoration:none;
+}
+
+#sidebar li {
+	font-family: "Times New Roman", Times, serif;
+list-style:none;
+text-align:centre;
+}
+
+#sidebar h3{
+	font-family: "Times New Roman", Times, serif;
+text-align:center;
+}
+
+#footer {
+font-family: "Times New Roman", Times, serif;
+font-size:18px;
+clear:both;
+width:auto;
+height:135px;
+border-top:1px solid #3b5998;
+}
+
+#footer h5 {
+font-family: "Times New Roman", Times, serif;
+direction:rtl;
+padding:10px;
+}
+
+#footer  a {
+text-decoration:none;
+}
+
+#footer h5 a:hover{
+color:#0c7dd9;
+}
+
+#check{
+
+padding-top:0;
+padding-right:15px;
+float:right;
+}
+
+#image{
+
+
+}
+
+
+
+/*ﬂÊœ «·ﬁ«∆„… «·Ã«‰»Ì…  */
+
+/*        V2        */
+.outer{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+
+	
+#menu {
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+	width: 200px;
+	border-style: solid solid none solid;
+	border-color: #94AA74;
+	border-width: 1px;
+
+	}
+#menu ul{
+	font-family: "Times New Roman", Times, serif;
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	}
+	
+#menu li a {
+	font-family: "Times New Roman", Times, serif;
+	height: 32px;
+  	voice-family: "\"}\""; 
+  	voice-family: inherit;
+  	height: 24px;
+	text-decoration: none;
+	font-weight:normal;
+	}	
+	
+#menu li a:link, #menu li a:visited {
+	font-family: "Times New Roman", Times, serif;
+	color: #FFFFFF;
+	display: block;
+	background: url(images/v6.gif);
+	background-repeat:no-repeat;
+	padding: 8px 0 0 50px;
+	}
+	
+#menu li a:hover {
+	color: #666666;
+	background: url(images/v6.gif) 0 -32px;
+	background-repeat:no-repeat;
+	padding: 8px 0 0 50px;
+	}
+	
+#menu li a:active {
+	color: #666666;
+	background: url(images/v6.gif) 0 -64px;
+	background-repeat:no-repeat;
+	padding: 8px 0 0 50px;
+	}
+
+	
+	/* ﬂÊœ «·‰«› »«— */
+	
+	
+ul#nav{
+	font-family: "Times New Roman", Times, serif;
+	font-size:18px;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	position:relative;
+	display:block;
+	height:40px;
+	text-transform:uppercase;
+	font-size:13px;
+	background:transparent url("images/black.jpg") repeat-x top left;
+
+}
+ul#nav li{
+	font-size:18px;
+	display:block;
+	float:right;
+	margin:0;
+	pading:0;
+	border-right:1px solid #ffffff;
+	}
+ul#nav li a{
+	font-size:18px;
+	display:block;
+	float:left;
+	color:#ffffff;
+	text-decoration:none;
+	padding:12px 20px 0 20px;
+	height:24px;
+	height:30px;
+	}
+ul#nav li a:hover{
+	font-size:18px;
+	background:transparent url("images/blue.jpg") repeat-x top left;	
+	}
+form {
+ background-color:#FAFAFA;
+ padding:10px;
+ width:auto;
+ }
+fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ border:1px solid #DF3F3F;
+ }
+legend {
+ color:#DF3F3F;
+ font-weight:bold
+ }
+
+input, textarea, select, option {
+ background-color:#FFF3F3;
+ }
+input, textarea, select {
+
+ padding:3px;
+ border:1px solid #F5C5C5;
+ border-radius:5px;
+ width:auto;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+select {
+ margin-top:10px;
+ }
+input[type=radio] {
+ background-color:transparent;
+ border:none;
+ width:auto;
+ }
+input[type=submit], input[type=reset] {
+ width:auto;
+ margin-left:5px;
+ box-shadow:1px 1px 1px #D83F3D;
+ cursor:pointer;
+ }
+ input[type=submit]:hover, input[type=reset]:hover {
+ background-color:#FCDEDE;
+ }
+input[type=submit]:active, input[type=reset]:active {
+ background-color:#FCDEDE;
+ box-shadow:1px 1px 1px #D83F3D inset;
+}
+.bouton  {
+display:block;
+width:150px;
+line-height:50px;
+text-align:center;
+vertical-align:middle;
+background:url(images/bouton-noir.png) no-repeat;
+color:white;
+text-decoration:none;
+}

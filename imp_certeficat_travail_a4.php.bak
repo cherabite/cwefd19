@@ -1,0 +1,160 @@
+
+<html dir="rtl">
+
+    <head>
+        <meta http-equiv="Content-Language" content="fr">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>rec</title>
+      
+    </head>
+    <body style="position:absolute;width:19cm;height:27cm; font-family: 'Amiri', serif;" >
+        <div>
+
+            <?php
+            $host = 'localhost';
+            $user = 'root';
+            $pass = '';
+            $db = 'grh';
+
+
+
+            $link = mysql_connect($host, $user, $pass) or die('Erreur : ' . mysql_error());
+            mysql_select_db($db) or die('Erreur :' . mysql_error());
+            mysql_query("set character_set_server='utf8'");
+            mysql_query("set names 'utf8'");
+
+            if (isset($_GET['ID_EMPLOYEUE'])) {
+                $ID_EMPLOYEUE = $_GET['ID_EMPLOYEUE'];
+                $req = mysql_query("select * from employeur where ID_EMPLOYEUE='$ID_EMPLOYEUE' ");
+                $nbr = mysql_fetch_array($req);
+                $ARRETE = $nbr['ARRETE'];
+                $PRESUME = $nbr['PRESUME'];
+                           $DATE_NAIS = $nbr['DNS'];
+                            $date = date_create($DATE_NAIS);
+
+                            $DNS0 = date_format($date, 'd-m-Y');
+                            $dns = date_format($date, 'Y');
+							$date = date_create($nbr['DATE_ARRETE']);
+
+                            $DATE_ARRETE = date_format($date, 'd-m-Y');
+						
+
+                            if ($PRESUME == '0') {
+                                $date_de_nais= $DNS0;
+                            } else {
+                               $date_de_nais= 'خـــلال  ' . $dns;
+                            }
+                        if ($ARRETE == 'لا') {
+                                $fin_travail= ' إلى يومنـا هـذا .';
+                            } else {
+								$fin_travail= 'إلى  غــاية :&nbsp;'. $DATE_ARRETE;
+                               
+                            } 
+							 $date = date_create($nbr['DATE_PV_INSTALL']);
+
+                            $DATE_PV_INSTALL = date_format($date, 'd-m-Y');
+						
+/************************/
+$info=$nbr['NOM'].' '.$nbr['PRENOM'].'   تاريخ الميلاد  '.$date_de_nais.' '.$nbr['LNS'].'  الوظيفة :  '.$nbr['GRADE'].'  '.'  تاريخ التنصيب : '.$DATE_PV_INSTALL.'  أنجزت يوم : '.date("d-m-Y");
+                   
+		 require('third_party/mpdf/mpdf/mpdf.php');
+  $pdf=new mPDF('"ar","A4","30","utf8",10,10,10,10,6,3'); 
+  
+ require_once('third_party/phpqrcode/qrlib.php');
+QRcode::png($info, 'filename.png', 'H',4,2);
+
+
+ 
+  
+$pdf->SetFont("amiri");
+$pdf->SetDirectionality('rtl');
+ //$pdf -> SetProtection ( array ('print')); 
+ $stylesheet= 'body,p { font-family:amiri; font-size:20; margin-top:2px; margin-bottom:4px; text-align:right;
+ background-image: url(images/b2.png);background-position:center; background-attachment: fixed; background-repeat: no-repeat;   background-image-resize: 6;
+ 
+ },span{text-align:left;}
+              
+				  ';
+	//$pdf= new mPDF('ar', "A4", $fontsize=11, $fontfamily="serif");
+       // $pdf->SetDirectionality('rtl');
+  ini_set('memory_limit','512M');     
+$pdf->useSubstitutions = false;
+$mpdf->autoScriptToLang = false;
+$mpdf->autoLangToFont = false;
+//$pdf->simpleTables = true;
+//$pdf->autoLangToFont = true;
+$pdf->WriteHTML($stylesheet, 1);	
+$pdf->SetMargins(0,0); 
+				//--------------------regler les marges en bas---------------------------------
+					 $pdf->SetAutoPageBreak(false,0);
+					// $pdf->setFontSubsetting(false,0);
+			 
+				//---------------- ecrire dans le pdf-------------------------------------------
+				
+// pour l'arrière plan c'est à dire la bordure:url ou bien le chemin on peut ecrire c:/xampp/htdocs/forbidden/codeigniter/bordure14.jpg  ou bordure14.jpg parce que l'image est dans la racine du cite c'est à dire 193.194.95.25/CodeIgniter				
+				$pdf->WriteHTML('
+<br/>	
+		
+<table style="padding-right:20px; "  >
+
+<tr  >
+
+<td colspan="2">
+
+ <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+ <p style="text-align:right" >رقم :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /م.ج.س/'.date("Y").'</p>
+<br>
+ <p style="font-weight: bold;"> تـشـهــد مديرة المــركـز الـولائـي للتعليم و التـكوين عن بـعــد  سطـــيـف:</p>
+ <br>                   
+                    <p style="font-weight: bold;"> بأن السيد (ة)&nbsp; :  '.$nbr['NOM'].' &nbsp;&nbsp;  '.$nbr['PRENOM'].'</p>
+  <br>                 
+ <p style="font-weight: bold;"> المولود (ة) بتاريخ : '.$date_de_nais.'</p>      
+<br> 
+ <p style="font-weight: bold;">  مكان الميلاد : &nbsp;'.$nbr['LNS'].'</p>
+<br/>
+<p style="font-weight: bold;"> موظف و يشتغل منصب : '.$nbr['GRADE'].'</p>
+<br/>
+<p style="font-weight: bold;">  مكان العمل : المركز الولائي للتعليم و التكوين عن بعد سطـــيـف</p>
+<br/>
+<p style="font-weight: bold;"> وهـذا إبتداءا من  :  '.$DATE_PV_INSTALL.' '.$fin_travail.'</p>
+<br/>
+<p style="font-weight: bold;"> سلمت هذه الشهادة للمعني بالأمر بطلب منه لإستعمالها فيما يسمح به القانون.</p>
+<br/>
+	<span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;						سـطـيف في :&nbsp; '.date("d-m-Y").' </span>    
+			<br>
+</td>
+</tr>
+<tr>
+<td ><img style="height:120px ; width: 120px" src="filename.png">
+</td>
+<td > 
+<span > المديرة &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</td>
+</tr>
+</table>');
+ 
+
+
+
+ $pdf->Output('Attestation_de_travail.pdf','I');
+
+			}
+ 
+?>
+ 
+ </div>
+    </body>
+    </html>
